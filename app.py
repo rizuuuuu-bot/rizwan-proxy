@@ -1,9 +1,9 @@
 import os
 import subprocess
+import sys  # <-- Hum ne yeh nayi library add ki hai
 
 # --- Configuration ---
 # Render humein batayega ke kis port par chalna hai
-# Agar nahin batata to hum 10000 istemal karenge
 PORT_TO_USE = os.environ.get("PORT", 10000)
 
 # Secret hum Render ke Environment se lenge
@@ -16,9 +16,9 @@ if not SECRET_TO_USE:
     exit(1)
 
 # --- Start the Proxy ---
-# Yeh woh command hai jo humara proxy server start karegi
+# Hum ab "sys.executable" istemal kar rahe hain taake sahi Python use ho
 command_to_run = [
-    "python",
+    sys.executable,  # <-- Hum ne "python" ki jagah yeh likha hai
     "-m",
     "mtprotoproxy",
     "--port",
